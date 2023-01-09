@@ -1,11 +1,15 @@
 const expenses = require("../models/expenseModel");
 
 const getExpenses = async (req, res) => {
-  const response = await expenses.findAll();
-  //const sum = await expenses.findTotalSum();
+  try {
+    const response = await expenses.findAll();
+    //const sum = await expenses.findTotalSum();
 
-  if (response) {
-    res.send(response);
+    if (response) {
+      res.send(response);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
@@ -16,56 +20,75 @@ const getAllExpenses = async (req, res) => {
 
 const getExpenseById = async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const response = await expenses.findById(id);
+  try {
+    const response = await expenses.findById(id);
 
-  if (response.length === 1) {
-    res.status(200).send(response[0]);
-  } else {
-    res.status(404).send("Not Found");
+    if (response.length === 1) {
+      res.status(200).send(response[0]);
+    } else {
+      res.status(404).send("Id not found!");
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
 const getExpenseByDate = async (req, res) => {
-  const date = parseInt(req.params.date);
-  const response = await expenses.findByDate(date);
-
-  if (response) {
-    res.send(response);
+  const date = req.params.date;
+  try {
+    const response = await expenses.findByDate(date);
+    if (response) {
+      res.send(response);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 const getExpenseByMonth = async (req, res) => {
-  const date = parseInt(req.params.date, 13);
-  const response = await expenses.findByMonth(date);
-
-  if (response) {
-    res.send(response);
+  const month = parseInt(req.params.date, 13);
+  try {
+    const response = await expenses.findByMonth(month);
+    if (response) {
+      res.send(response);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
 const getExpenseByShop = async (req, res) => {
   const shop = req.params.shop;
-  const response = await expenses.findByShop(shop);
-
-  if (response) {
-    res.send(response);
+  try {
+    const response = await expenses.findByShop(shop);
+    if (response) {
+      res.send(response);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
 const getExpenseByCategory = async (req, res) => {
   const category = req.params.category;
-  const response = await expenses.findByCategory(category);
-
-  if (response) {
-    res.send(response);
+  try {
+    const response = await expenses.findByCategory(category);
+    if (response) {
+      res.send(response);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
 const getExpenseByAmount = async (req, res) => {
   const amount = req.params.amount;
-  const response = await expenses.findByAmount(amount);
-
-  if (response) {
-    res.send(response);
+  try {
+    const response = await expenses.findByAmount(amount);
+    if (response) {
+      res.send(response);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
@@ -76,10 +99,14 @@ const createExpense = async (req, res) => {
     shop: req.body.shop,
     amount: req.body.amount,
   };
-  const response = await expenses.save(expense);
-  if (response) {
-    expense.id = response.insertId;
-    res.send(expense);
+  try {
+    const response = await expenses.save(expense);
+    if (response) {
+      expense.id = response.insertId;
+      res.status(201).send(expense);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
@@ -91,17 +118,25 @@ const updateExpense = async (req, res) => {
     shop: req.body.shop,
     amount: req.body.amount,
   };
-  const response = await expenses.updateById(expense);
-  if (response) {
-    res.send(expense);
+  try {
+    const response = await expenses.updateById(expense);
+    if (response) {
+      res.send(expense);
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 
 const deleteExpense = async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const response = await expenses.deleteById(id);
-  if (response) {
-    res.send("Expense deleted");
+  try {
+    const response = await expenses.deleteById(id);
+    if (response) {
+      res.send("Expense deleted");
+    }
+  } catch (e) {
+    res.sendStatus(500);
   }
 };
 

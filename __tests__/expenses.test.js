@@ -71,6 +71,6 @@ describe("Test GET /expenses", () => {
     const response = await request(app).get("/api/expenses/501");
 
     expect(response.status).toEqual(404);
-    expect(response.text).toContain("Not Found");
+    expect(response.text).toContain("Id not found!");
   });
 });
