@@ -4,15 +4,10 @@ const expensesRouter = require("./src/routes/expenseRoute");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
-
-app.get("/", (req, res) => {
-  res.send("Hello");
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
 });
 
 app.use("/api/expenses", expensesRouter);
