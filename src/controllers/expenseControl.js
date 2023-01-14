@@ -3,7 +3,6 @@ const expenses = require("../models/expenseModel");
 const getExpenses = async (req, res) => {
   try {
     const response = await expenses.findAll();
-    //const sum = await expenses.findTotalSum();
 
     if (response) {
       res.send(response);
@@ -11,11 +10,6 @@ const getExpenses = async (req, res) => {
   } catch (e) {
     res.sendStatus(500);
   }
-};
-
-const getAllExpenses = async (req, res) => {
-  const response = await expenses.findTotalSum();
-  return res.json({ data: response.data });
 };
 
 const getExpenseById = async (req, res) => {
@@ -131,6 +125,12 @@ const updateExpense = async (req, res) => {
 const deleteExpense = async (req, res) => {
   const id = parseInt(req.params.id, 10);
   try {
+    const result = await expenses.findById(id);
+    if (result.length === 0) {
+      res.status(404).send("Id not found!");
+      return;
+    }
+
     const response = await expenses.deleteById(id);
     if (response) {
       res.send("Expense deleted");
@@ -141,7 +141,6 @@ const deleteExpense = async (req, res) => {
 };
 
 module.exports = {
-  getAllExpenses,
   createExpense,
   deleteExpense,
   getExpenses,

@@ -1,0 +1,46 @@
+### Get all
+GET https://expense-express-api.onrender.com/api/expenses
+
+### Get id
+GET https://expense-express-api.onrender.com/api/expenses/3
+
+### Get month
+GET https://expense-express-api.onrender.com/api/expenses/month/6
+
+### Get date
+GET https://expense-express-api.onrender.com/api/expenses/date/2022-01-15
+
+### Get shop
+GET https://expense-express-api.onrender.com/api/expenses/shop/zalando
+
+### Get category
+GET https://expense-express-api.onrender.com/api/expenses/category/ice cream
+
+###Get amount
+GET https://expense-express-api.onrender.com/api/expenses/amount/100
+
+### Post expense
+POST https://expense-express-api.onrender.com/api/expenses HTTP/1.1
+content-type: application/json
+
+{
+ "date": "2022-06-25",
+ "category": "smokes",
+ "shop": "rkioksi",
+ "amount": 666
+}
+
+### Update expense
+PUT https://expense-express-api.onrender.com/api/expenses HTTP/1.1
+content-type: application/json
+
+{
+ "id": 13,
+ "date": "2022-09-13",
+ "category": "motoroil",
+ "shop": "motonet",
+ "amount": 60
+}
+
+### Delete expense
+DELETE http://localhost:5000/api/expenses/9

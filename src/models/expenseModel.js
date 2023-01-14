@@ -10,18 +10,7 @@ const expenses = {
         resolve(result);
       });
     }),
-  findTotalSum: () =>
-    new Promise((resolve, reject) => {
-      connection.query(
-        "SELECT SUM (amount) AS total from expenselist;",
-        (err, result) => {
-          if (err) {
-            reject(err);
-          }
-          resolve(result);
-        }
-      );
-    }),
+
   findByAmount: (amount) =>
     new Promise((resolve, reject) => {
       connection.query(

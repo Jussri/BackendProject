@@ -2,7 +2,7 @@
 GET http://localhost:5000/api/expenses
 
 ### Get id
-GET http://localhost:5000/api/expenses/5
+GET http://localhost:5000/api/expenses/3
 
 ### Get month
 GET http://localhost:5000/api/expenses/month/6
@@ -14,7 +14,7 @@ GET http://localhost:5000/api/expenses/date/2022-01-15
 GET http://localhost:5000/api/expenses/shop/zalando
 
 ### Get category
-GET http://localhost:5000/api/expenses/category/beer
+GET http://localhost:5000/api/expenses/category/records
 
 ###Get amount
 GET http://localhost:5000/api/expenses/amount/100
@@ -43,4 +43,4 @@ content-type: application/json
 }
 
 ### Delete expense
-DELETE http://localhost:5000/api/expenses/8
+DELETE http://localhost:5000/api/expenses/13
