@@ -35,7 +35,7 @@ PUT http://localhost:5000/api/expenses HTTP/1.1
 content-type: application/json
 
 {
- "id": 8,
+ "id": 72,
  "date": "2022-06-25",
  "category": "carpart",
  "shop": "motonet",
@@ -43,4 +43,4 @@ content-type: application/json
 }
 
 ### Delete expense
-DELETE http://localhost:5000/api/expenses/13
+DELETE http://localhost:5000/api/expenses/15

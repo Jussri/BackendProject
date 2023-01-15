@@ -18,9 +18,9 @@ const getExpenseById = async (req, res) => {
     const response = await expenses.findById(id);
 
     if (response.length === 1) {
-      res.status(200).send(response[0]);
+      res.send(response[0]);
     } else {
-      res.status(404).send("Id not found!");
+      res.status(404).json("Id not found!");
     }
   } catch (e) {
     res.sendStatus(500);
@@ -113,6 +113,11 @@ const updateExpense = async (req, res) => {
     amount: req.body.amount,
   };
   try {
+    const result = await expenses.findById(expense.id);
+    if (result.length === 0) {
+      res.status(404).send("Id not found!");
+      return;
+    }
     const response = await expenses.updateById(expense);
     if (response) {
       res.send(expense);
@@ -132,7 +137,7 @@ const deleteExpense = async (req, res) => {
     }
 
     const response = await expenses.deleteById(id);
-    if (response) {
+    if (response.affectedRows === 1) {
       res.send("Expense deleted");
     }
   } catch (e) {
