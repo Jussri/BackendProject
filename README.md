@@ -71,7 +71,7 @@ INSERT INTO `expenselist` (`date`,`category`,`shop`,`amount`) VALUES ('2022-01-1
 
 ### Clone repository
 
-git clone https://github.com/tiko-4A00EZ62/2022-wk49-final-project-Jussri.git
+git clone https://github.com/Jussri/BackendProject.git
 
 ### Install dependencies
 
@@ -93,4 +93,4 @@ npm run dev
 
 I think this project was pretty well done and I was able to do most of the mandatory parts and some extra aswell
 It might not by be perfect, but I think the code is pretty easy to read and it works like it should.
-All in all I believe that the grade of this project is somewhere between 2 and 3.
+All in all I believe that the grade of this project is somewhere between 3 and 4.
